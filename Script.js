@@ -64,13 +64,11 @@ sprint_start.addEventListener("click", ()=>{
         console.log("Your 10 minuted have started")
     }else if(button_25_min.checked){
         time=1500;
-    }else if(custom_sprint.value!=" "){
+    }else if(custom_sprint.value > 0){
         time=custom_sprint.value*60;
     console.log(time);
     countdown(time);
-
     }
-
     else{
         console.log("No good selection")
     }
@@ -97,7 +95,9 @@ pause_sprint.addEventListener('click', ()=>{
        isPaused = true;
     console.log("Your sprint is paused")
     pause_sprint.classList.add('invisible');
-})
+     resume_sprint.classList.remove('invisible');
+    }
+)
 
 end_sprint.addEventListener('click', ()=>{
     clearInterval(timer);
