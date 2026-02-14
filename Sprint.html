@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 <body>
@@ -10,17 +11,31 @@
     <div id="select-sprint">
     <h2>Select Your Sprint Session</h2>
 
+
+
+
     <div id="sprint-selection">
+        <input type="radio" name="sprint-time" id="5-minutes-radio" value="5">
+        <label for="5-minutes-radio">5 minutes</label>
+
+        <input type="radio" name="sprint-time" id="10-minutes-radio" value="10">
+        <label for="10-minutes-radio">10 minutes</label>
+         
+        <input type="radio" name="sprint-time" id="25-minutes-radio" value="25">
+        <label for="25-minutes-radio">25 minutes</label>
+
+
+<!--
     <button id="5-minutes">5 minutes</button>
     <button id="10-minutes">10 minutes</button>
-    <button id="25-minutes">25 minutes</button>
+    <button id="25-minutes">25 minutes</button>-->
     <button id="Custom-button">custom</button></div>
 
 
-    <input type="number" id="custom-sprint" class=" ">
+    <input type="number" id="custom-sprint" class="invisible">
 
 
-    <button type="submit">start Sprint</button></div>
+    <button id="sprint-start" type="submit">start Sprint</button></div>
 
     <!--Active Sprint Page-->
 
