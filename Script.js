@@ -2,11 +2,13 @@ let button_5_min = document.getElementById("5-minutes");
 let button_10_min = document.getElementById("10-minutes");
 let button_25_min = document.getElementById("25-minutes");
 let button_custom = document.getElementById("Custom-button");
+let custom_sprint= document.getElementById("custom-sprint");
 
 let first_page=document.getElementById('select-sprint');
 let sprint_display=document.getElementById('sprint-display');
 
 
+custom_sprint=Math.floor(custom_sprint);
 let timer; // store interval globally
 
 function displayTimer(time){
@@ -60,7 +62,9 @@ console.log("Your 25 minuted have started")
 })
 
 button_custom.addEventListener('click', ()=>{
-    countdown(time);
-console.log("You have clicked")
+    
+    //time=custom_sprint*60;
+    console.log(custom_sprint);
+    //countdown(time);
 })
     
