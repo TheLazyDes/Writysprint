@@ -3,16 +3,22 @@ let button_10_min = document.getElementById("10-minutes-radio");
 let button_25_min = document.getElementById("25-minutes-radio");
 let button_custom = document.getElementById("Custom-button");
 let sprint_start = document.getElementById("sprint-start");
-let custom_sprint= document.getElementById("custom-sprint")
+let custom_sprint= document.getElementById("custom-sprint");
+let pause_sprint=document.getElementById("pause-sprint");
+let end_sprint=document.getElementById("end-sprint");
+let resume_sprint=document.getElementById("resume-sprint");
 
 
 
 let first_page=document.getElementById('select-sprint');
 let sprint_display=document.getElementById('sprint-display');
+let second_page=document.getElementById('run-sprint');
 
 
+let timer; 
+let remainingTime;// store interval globally
+let isPaused= false;
 
-let timer; // store interval globally
 
 function displayTimer(time){
     const minutes = Math.floor(time / 60);
@@ -24,15 +30,16 @@ function displayTimer(time){
 
 function countdown(time){
 
-    clearInterval(timer); // stop previous timer if running
+    clearInterval(timer);
 
-    displayTimer(time); // show initial time
+    remainingTime = time;   // store globally
+    displayTimer(remainingTime);
 
     timer = setInterval(() => {
 
-        if (time > 0){
-            time--;
-            displayTimer(time);
+        if (remainingTime > 0){
+            remainingTime--;
+            displayTimer(remainingTime);
         } else {
             clearInterval(timer);
             sprint_display.textContent = "Time up!";
@@ -40,6 +47,7 @@ function countdown(time){
 
     }, 1000);
 }
+
 
 
 
@@ -67,9 +75,35 @@ sprint_start.addEventListener("click", ()=>{
         console.log("No good selection")
     }
 countdown(time);
+second_page.classList.remove('invisible');
+first_page.classList.add('invisible');
 
 })
 
+
+resume_sprint.addEventListener('click', ()=>{
+    if (isPaused) {
+        countdown(remainingTime);
+        isPaused = false;
+        console.log("Your sprint has resumed")
+        pause_sprint.classList.remove('invisible');
+        resume_sprint.classList.add('invisible');
+    }
+})
+
+pause_sprint.addEventListener('click', ()=>{
+    clearInterval(timer);
+
+       isPaused = true;
+    console.log("Your sprint is paused")
+    pause_sprint.classList.add('invisible');
+})
+
+end_sprint.addEventListener('click', ()=>{
+    clearInterval(timer);
+    sprint_display.textContent = "Sprint Ended";
+    console.log("Your sprint has ended")
+})
 
 
 
