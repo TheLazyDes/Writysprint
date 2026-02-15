@@ -102,6 +102,13 @@ pause_sprint.addEventListener('click', ()=>{
 end_sprint.addEventListener('click', ()=>{
     clearInterval(timer);
     sprint_display.textContent = "Sprint Ended";
+
+    setTimeout(()=>{
+        second_page.classList.add("invisible");
+        first_page.classList.remove("invisible");
+
+
+    },1000)
     console.log("Your sprint has ended")
 })
 
