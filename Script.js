@@ -2,17 +2,22 @@ let button_5_min = document.getElementById("5-minutes-radio");
 let button_10_min = document.getElementById("10-minutes-radio");
 let button_25_min = document.getElementById("25-minutes-radio");
 let button_custom = document.getElementById("Custom-button");
+
+
+
 let sprint_start = document.getElementById("sprint-start");
 let custom_sprint= document.getElementById("custom-sprint");
 let pause_sprint=document.getElementById("pause-sprint");
 let end_sprint=document.getElementById("end-sprint");
 let resume_sprint=document.getElementById("resume-sprint");
+let pop_up=document.getElementById("confirm-popup");
 
 
 
 let first_page=document.getElementById('select-sprint');
 let sprint_display=document.getElementById('sprint-display');
-let second_page=document.getElementById('run-sprint');
+let second_page=document.getElementById('active-sprint');
+
 
 
 let timer; 
@@ -48,9 +53,20 @@ function countdown(time){
     }, 1000);
 }
 
+function resetToFirstPage(){
+    clearInterval(timer);
+    first_page.classList.remove('invisible');
+    second_page.classList.add('invisible');
+    pop_up.classList.add('invisible');
+}
 
+function setToSecondPage(){
+//second_page_container.classList.remove('invisible');
+second_page.classList.remove('invisible');
 
+first_page.classList.add('invisible');
 
+}
 
 sprint_start.addEventListener("click", ()=>{
     if(button_5_min.checked){
@@ -67,14 +83,14 @@ sprint_start.addEventListener("click", ()=>{
     }else if(custom_sprint.value > 0){
         time=custom_sprint.value*60;
     console.log(time);
-    countdown(time);
+
     }
     else{
         console.log("No good selection")
     }
 countdown(time);
-second_page.classList.remove('invisible');
-first_page.classList.add('invisible');
+
+setToSecondPage();
 
 })
 
@@ -104,34 +120,14 @@ end_sprint.addEventListener('click', ()=>{
     sprint_display.textContent = "Sprint Ended";
 
     setTimeout(()=>{
-        second_page.classList.add("invisible");
+        /*second_page.classList.add("invisible");
         first_page.classList.remove("invisible");
 
-
+        */pop_up.classList.remove("invisible");
     },1000)
     console.log("Your sprint has ended")
 })
 
-
-
-/*button_5_min.addEventListener('click', ()=>{
-time=300;
-countdown(time);
-console.log("Your 5 minuted have started")
-})
-
-
-button_10_min.addEventListener('click', ()=>{
-time=600;
-countdown(time);
-console.log("Your 10 minuted have started")
-})
-
-button_25_min.addEventListener('click', ()=>{
-
-countdown(time);
-console.log("Your 25 minuted have started")
-})*/
 
 button_custom.addEventListener('click', ()=>{
     custom_sprint.classList.remove('invisible');
