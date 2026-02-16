@@ -82,13 +82,21 @@ function setToSecondPage() {
 sprint_start.addEventListener("click", () => {
     let time = 0;
 
-    if (button_5_min.checked) {
+    if (custom_sprint.value > 0) {
+        button_10_min.checked = false;
+        button_5_min.checked = false;
+        button_25_min.checked = false;
+        time = custom_sprint.value * 60;
+    }else if (button_5_min.checked) {
         time = 300;
     } else if (button_10_min.checked) {
         time = 600;
     } else if (button_25_min.checked) {
         time = 1500;
     } else if (custom_sprint.value > 0) {
+        button_10_min,checked = false;
+        button_5_min.checked = false;
+        button_25_min.checked = false;
         time = custom_sprint.value * 60;
     }
 
