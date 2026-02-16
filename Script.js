@@ -2,7 +2,8 @@ let button_5_min = document.getElementById("5-minutes-radio");
 let button_10_min = document.getElementById("10-minutes-radio");
 let button_25_min = document.getElementById("25-minutes-radio");
 let button_custom = document.getElementById("Custom-button");
-
+let stop_button = document.getElementById("yes-button");
+let cancel_button = document.getElementById("no-button");
 
 
 let sprint_start = document.getElementById("sprint-start");
@@ -94,15 +95,19 @@ setToSecondPage();
 
 })
 
-
-resume_sprint.addEventListener('click', ()=>{
-    if (isPaused) {
+function resumeExecution(){
+ if (isPaused) {
         countdown(remainingTime);
         isPaused = false;
         console.log("Your sprint has resumed")
         pause_sprint.classList.remove('invisible');
         resume_sprint.classList.add('invisible');
     }
+}
+
+
+resume_sprint.addEventListener('click', ()=>{
+   resumeExecution();
 })
 
 pause_sprint.addEventListener('click', ()=>{
@@ -117,7 +122,10 @@ pause_sprint.addEventListener('click', ()=>{
 
 end_sprint.addEventListener('click', ()=>{
     clearInterval(timer);
-    sprint_display.textContent = "Sprint Ended";
+    isPaused = true;
+
+   // sprint_display.textContent = "Sprint Ended";
+
 
     setTimeout(()=>{
         /*second_page.classList.add("invisible");
@@ -125,7 +133,17 @@ end_sprint.addEventListener('click', ()=>{
 
         */pop_up.classList.remove("invisible");
     },1000)
+   // console.log("Your sprint has ended")
+})
+
+stop_button.addEventListener('click', ()=>{
+    resetToFirstPage();
     console.log("Your sprint has ended")
+})
+
+cancel_button.addEventListener('click', ()=>{
+    pop_up.classList.add('invisible');
+    resumeExecution();
 })
 
 
