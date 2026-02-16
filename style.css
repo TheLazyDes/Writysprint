@@ -1,26 +1,34 @@
-.invisible{
-display: none;
+/* Utility */
+.invisible {
+    display: none;
 }
 
+/* ============================= */
+/* POPUP OVERLAY (hidden by default) */
+/* ============================= */
 
-
-.popup-overlay {
+#confirm-popup {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-
+    inset: 0; /* replaces top/left/width/height */
     background: rgba(0, 0, 0, 0.5);
 
-    display: flex;
+    display: none; /* IMPORTANT: hidden initially */
+
     justify-content: center;
     align-items: center;
 
     z-index: 1000;
 }
 
-/* Popup box */
+/* When popup is active */
+#confirm-popup.active {
+    display: flex;
+}
+
+/* ============================= */
+/* POPUP BOX */
+/* ============================= */
+
 .popup-box {
     background: white;
     padding: 2rem;
@@ -34,7 +42,10 @@ display: none;
     animation: popIn 0.25s ease;
 }
 
-/* Buttons container */
+/* ============================= */
+/* BUTTONS CONTAINER */
+/* ============================= */
+
 .popup-buttons {
     margin-top: 1.5rem;
     display: flex;
@@ -42,7 +53,10 @@ display: none;
     gap: 1rem;
 }
 
-/* Buttons styling */
+/* ============================= */
+/* BUTTON STYLING */
+/* ============================= */
+
 .popup-box button {
     flex: 1;
     padding: 0.7rem;
@@ -53,6 +67,7 @@ display: none;
     transition: 0.2s ease;
 }
 
+/* NO BUTTON */
 #no-button {
     background: #e5e5e5;
 }
@@ -60,6 +75,7 @@ display: none;
 #no-button:hover {
     background: #d4d4d4;
 }
+
 
 #yes-button {
     background: #ff4d4d;
@@ -70,7 +86,8 @@ display: none;
     background: #e60000;
 }
 
-/* Smooth pop animation */
+
+
 @keyframes popIn {
     from {
         opacity: 0;

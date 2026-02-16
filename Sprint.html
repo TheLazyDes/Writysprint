@@ -4,68 +4,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>Sprint Timer</title>
 </head>
+
 <body>
-    <!--First Sprint Page-->
+
+    <!-- ========================= -->
+    <!-- FIRST SPRINT PAGE -->
+    <!-- ========================= -->
     <div id="select-sprint">
-    <h2>Select Your Sprint Session</h2>
+
+        <h2>Select Your Sprint Session</h2>
+
+        <div id="sprint-selection">
+
+            <input type="radio" name="sprint-time" id="5-minutes-radio" value="5">
+            <label for="5-minutes-radio">5 minutes</label>
+
+            <input type="radio" name="sprint-time" id="10-minutes-radio" value="10">
+            <label for="10-minutes-radio">10 minutes</label>
+
+            <input type="radio" name="sprint-time" id="25-minutes-radio" value="25">
+            <label for="25-minutes-radio">25 minutes</label>
+
+            <button id="Custom-button">Custom</button>
+
+        </div>
+
+        <input type="number" id="custom-sprint" class="invisible" placeholder="Enter minutes">
+
+        <button id="sprint-start" type="button">Start Sprint</button>
+
+    </div>
 
 
-
-
-    <div id="sprint-selection">
-        <input type="radio" name="sprint-time" id="5-minutes-radio" value="5">
-        <label for="5-minutes-radio">5 minutes</label>
-
-        <input type="radio" name="sprint-time" id="10-minutes-radio" value="10">
-        <label for="10-minutes-radio">10 minutes</label>
-         
-        <input type="radio" name="sprint-time" id="25-minutes-radio" value="25">
-        <label for="25-minutes-radio">25 minutes</label>
-
-    <button id="Custom-button">custom</button></div>
-
-
-    <input type="number" id="custom-sprint" class="invisible">
-
-
-    <button id="sprint-start" type="button">start Sprint</button></div>
-
-    <!--Active Sprint Page-->
-    
-
+    <!-- ========================= -->
+    <!-- ACTIVE SPRINT PAGE -->
+    <!-- ========================= -->
     <div id="active-sprint" class="invisible">
+
         <h2 id="sprint-display"></h2>
 
         <button id="end-sprint">End Sprint</button>
         <button id="pause-sprint">Pause Sprint</button>
-        <button id="resume-sprint" class="invisible">Resume Sprint</button> </div>
+        <button id="resume-sprint" class="invisible">Resume Sprint</button>
+
+    </div>
 
 
+    <!-- ========================= -->
+    <!-- CONFIRM POPUP -->
+    <!-- ========================= -->
+    <div id="confirm-popup">
 
+        <div class="popup-box">
 
-      
-    <div id="confirm-popup" class="invisible">
-        <div class="popup-box"  >
             <p>Are you sure you want to end your sprint?</p>
-                <div class="popup-buttons">
-                    <button id="no-button">NO</button>
-                    <button id="yes-button">YES</button>
-       
-    </div>
 
+            <div class="popup-buttons">
+                <button id="no-button">NO</button>
+                <button id="yes-button">YES</button>
+            </div>
 
-
-</div>
-
-
+        </div>
 
     </div>
-
 
 
     <script src="Script.js"></script>
-</body>
 
+</body>
 </html>
