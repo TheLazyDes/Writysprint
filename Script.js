@@ -1,3 +1,7 @@
+
+import { setToSecondPage, resetToFirstPage } from "./subscripts/sprintmanager.js";
+
+
 const button_5_min = document.getElementById("5-minutes-radio");
 const button_10_min = document.getElementById("10-minutes-radio");
 const button_25_min = document.getElementById("25-minutes-radio");
@@ -58,22 +62,8 @@ function countdown(time) {
 /* PAGE CONTROL */
 /* ========================= */
 
-function resetToFirstPage() {
-    clearInterval(timer);
-    isPaused = false;
 
-    first_page.classList.remove("invisible");
-    second_page.classList.add("invisible");
-    pop_up.classList.remove("active");
 
-    pause_sprint.classList.remove("invisible");
-    resume_sprint.classList.add("invisible");
-}
-
-function setToSecondPage() {
-    second_page.classList.remove("invisible");
-    first_page.classList.add("invisible");
-}
 
 /* ========================= */
 /* START SPRINT */
@@ -107,7 +97,7 @@ sprint_start.addEventListener("click", () => {
 
     isPaused = false;
     countdown(time);
-    setToSecondPage();
+    setToSecondPage(first_page, second_page);
 });
 
 /* ========================= */
@@ -150,7 +140,7 @@ end_sprint.addEventListener("click", () => {
 /* ========================= */
 
 stop_button.addEventListener("click", () => {
-    resetToFirstPage();
+    resetToFirstPage(timer, isPaused, first_page, second_page, pop_up, pause_sprint, resume_sprint)
 });
 
 cancel_button.addEventListener("click", () => {
