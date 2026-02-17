@@ -155,3 +155,4 @@ cancel_button.addEventListener("click", () => {
 button_custom.addEventListener("click", () => {
     custom_sprint.classList.remove("invisible");
 });
+

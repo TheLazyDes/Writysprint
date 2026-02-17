@@ -1,18 +1,165 @@
-/* Utility */
+/* ============================= */
+/* GLOBAL RESET */
+/* ============================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(180deg, #e8f5e9, #ffffff);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #2f2f2f;
+}
+
+/* ============================= */
+/* UTILITY */
+/* ============================= */
+
 .invisible {
     display: none;
 }
 
 /* ============================= */
-/* POPUP OVERLAY (hidden by default) */
+/* MAIN PANDA CARD */
+/* ============================= */
+
+#select-sprint,
+#active-sprint {
+    background: #ffffff;
+    width: 90%;
+    max-width: 420px;
+    padding: 40px 30px;
+    border-radius: 30px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    position: relative;
+}
+
+/* Panda ears */
+#select-sprint::before,
+#select-sprint::after {
+    content: "";
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background: #1e1e1e;
+    border-radius: 50%;
+    top: -35px;
+    z-index: -1;
+}
+
+#select-sprint::before {
+    left: 40px;
+}
+
+#select-sprint::after {
+    right: 40px;
+}
+
+/* ============================= */
+/* HEADINGS */
+/* ============================= */
+
+h2 {
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+/* ============================= */
+/* SPRINT OPTIONS */
+/* ============================= */
+
+#sprint-selection {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+label {
+    background: #f3f3f3;
+    padding: 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+input[type="radio"]:checked + label {
+    background: #c8e6c9;
+    border: 2px solid #66bb6a;
+    font-weight: 600;
+}
+
+/* ============================= */
+/* GENERAL BUTTON STYLE */
+/* ============================= */
+
+button {
+    background: #1e1e1e;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+}
+
+/* Start button special styling */
+#sprint-start {
+    margin-top: 15px;
+    width: 100%;
+    background: #66bb6a;
+}
+
+#sprint-start:hover {
+    background: #43a047;
+}
+
+/* Custom input */
+#custom-sprint {
+    margin-top: 10px;
+    padding: 8px;
+    border-radius: 15px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+/* ============================= */
+/* ACTIVE SPRINT DISPLAY */
+/* ============================= */
+
+#sprint-display {
+    font-size: 2.5rem;
+    margin-bottom: 25px;
+    font-weight: bold;
+}
+
+/* ============================= */
+/* POPUP OVERLAY (YOUR ORIGINAL LOGIC KEPT) */
 /* ============================= */
 
 #confirm-popup {
     position: fixed;
-    inset: 0; /* replaces top/left/width/height */
+    inset: 0;
     background: rgba(0, 0, 0, 0.5);
 
-    display: none; /* IMPORTANT: hidden initially */
+    display: none;
 
     justify-content: center;
     align-items: center;
@@ -26,13 +173,13 @@
 }
 
 /* ============================= */
-/* POPUP BOX */
+/* POPUP BOX (PANDA STYLE UPGRADE) */
 /* ============================= */
 
 .popup-box {
     background: white;
     padding: 2rem;
-    border-radius: 15px;
+    border-radius: 20px;
     width: 90%;
     max-width: 400px;
     text-align: center;
@@ -54,13 +201,13 @@
 }
 
 /* ============================= */
-/* BUTTON STYLING */
+/* POPUP BUTTON STYLING */
 /* ============================= */
 
 .popup-box button {
     flex: 1;
     padding: 0.7rem;
-    border-radius: 8px;
+    border-radius: 20px;
     border: none;
     cursor: pointer;
     font-weight: bold;
@@ -76,7 +223,7 @@
     background: #d4d4d4;
 }
 
-
+/* YES BUTTON */
 #yes-button {
     background: #ff4d4d;
     color: white;
@@ -84,9 +231,25 @@
 
 #yes-button:hover {
     background: #e60000;
+
 }
 
 
+/* Cancel Button Styling */
+#cancel-sprint {
+    margin-top: 10px;
+    width: 100%;
+    background: #f3f3f3;
+    color: #333;
+}
+
+#cancel-sprint:hover {
+    background: #e0e0e0;
+}
+
+/* ============================= */
+/* POPUP ANIMATION */
+/* ============================= */
 
 @keyframes popIn {
     from {
