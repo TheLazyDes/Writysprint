@@ -1,9 +1,10 @@
-
+//function to return to second page
 export function setToSecondPage(first_page, second_page) {
     second_page.classList.remove("invisible");
     first_page.classList.add("invisible");
 }
 
+//function to return to first page
 export function resetToFirstPage(timer, isPaused, first_page, second_page, pop_up, pause_sprint, resume_sprint) {
     clearInterval(timer);
     isPaused = false;
