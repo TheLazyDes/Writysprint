@@ -7,7 +7,10 @@
     <link rel="stylesheet" href="./css/login.module.css">
 </head>
 <body>
-    <div class="invisible"><form action="" method="post">
+    <div id="login" class="invisible">
+        <h2>Log In to Your Account</h2>
+        <form action="./subscripts/login.php" method="post">
+        
 
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" required>
@@ -17,10 +20,11 @@
         <br><br>
         <input type="submit" value="Login">
     </form>
-<p>Don't have an account? <a href="#">Sign up</a></p></div>
+<p >Don't have an account? <a id="signup-switch" class="link">Sign up</a></p></div>
 
-    <div>
-    <form action="" method="post">
+    <div id="signup">
+        <h2>Create An Account</h2>
+    <form action="./subscripts/login.php" method="post">
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" required><br><br>
         <label for="email">Email:</label>
@@ -29,6 +33,10 @@
         <input type="password" id="password" name="password" required><br><br>
         <input type="submit" value="Submit">
     </form>
-<p>Have an account? <a href="#">Log in</a></p></div>
+<p >Have an account? <a id="login-switch" class="link">Log in</a></p></div>
+
+<script src="./subscripts/login.js">
+
+</script>
 </body>
 </html>
