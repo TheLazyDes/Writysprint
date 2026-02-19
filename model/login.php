@@ -1,7 +1,7 @@
 <?php
 
-$validusers=[["username" => "alysaa1", "name" =>"Alyssa Liu", "email"=> "itsalyssa@gmail.com", "password"=> "itslyssa"], 
-            ["username"=>"mirabby", "name"=>"Anne Mirabel", "email"=> "itsmira@gmail.com", "password"=> "miraa123"]
+$validusers=[["username" => "alysaa1", "name" =>"Alyssa Liu", "email"=> "itsalyssa@gmail.com", "password"=> "itslyssa", "streak"=> 2], 
+            ["username"=>"mirabby", "name"=>"Anne Mirabel", "email"=> "itsmira@gmail.com", "password"=> "miraa123", "streak"=> 2]
 
 ];
 
@@ -23,7 +23,7 @@ function signup( $validusers, $inputpassword, $inputusername, $inputemail, $inpu
         exit();
     }
     }
-    $validusers[]= ["username"=> $inputusername, "name"=> $inputname, "email"=> $inputemail, "password" => $inputpassword];
+    $validusers[]= ["username"=> $inputusername, "name"=> $inputname, "email"=> $inputemail, "password" => $inputpassword, "streak" => 0];
     
     return $validusers;
     
@@ -40,8 +40,8 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 
 $inputusername= $_POST["username"];
 $inputpassword= $_POST["password"];
-$inputemail= $_POST["email"];
-$inputname= $_POST["name"];
+$inputemail= " ";
+$inputname= " ";
 $action=$_POST["action"];
 
 
@@ -50,11 +50,14 @@ login($validusers, $inputusername, $inputpassword);
 echo "Login complete";
 
 }elseif ($action== "Signup"){
+    $inputemail= $_POST["email"];
+    $inputname= $_POST["name"];
     $validusers = signup($validusers, $inputpassword, $inputusername, $inputemail, $inputname);
     echo "SignUp complete <br>";
     echo "New username: " . $validusers[count($validusers)-1]["username"];
 }else{
     header("Location: ../login.html");
+    exit();
 }
 
 
@@ -79,8 +82,7 @@ echo "Login complete";
 
 }
 else{
-    echo "You are a fake";
-//header("Location: ../login.html");
+header("Location: ../login.html");
 }
 
 
