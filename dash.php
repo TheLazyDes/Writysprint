@@ -16,10 +16,15 @@ echo "<h2>WELCOME TO THE DASHBOARD!</h2>";
     <title>Document</title>
 </head>
 <body>
-    <p>Your streak</p>
-    <p class="streak-number"></p>
+    <div>
+    <h3>Your streak</h3>
+    <p class="streak-number"></p></div>
 
-    <p>Time spent writing today</p>
-    <p class="streak-time"></p>
+    <div><h3>Time spent writing today</h3>
+    <p class="streak-time"> 0 minutes spent</p></div>
+
+
+
+    <button > <a href="sprint.html">Start Sprint</a></button>
 </body>
 </html>
