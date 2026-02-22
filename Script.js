@@ -1,5 +1,6 @@
 
 import { setToSecondPage, resetToFirstPage } from "./subscripts/sprintmanager.js";
+import { sendData } from "./subscripts/timespent.js";
 
 
 const button_5_min = document.getElementById("5-minutes-radio");
@@ -20,11 +21,13 @@ const pop_up = document.getElementById("confirm-popup");
 const first_page = document.getElementById("select-sprint");
 const sprint_display = document.getElementById("sprint-display");
 const second_page = document.getElementById("active-sprint");
+let streakNumber = document.getElementById("streak-number");
 
 let timer = null;
 let remainingTime = 0;
 let isPaused = false;
 let setTime = 0;
+let workcase= "";
 
 /* ========================= */
 /* DISPLAY TIMER */
@@ -55,6 +58,8 @@ function countdown(time) {
         } else {
             clearInterval(timer);
             sprint_display.textContent = "Time up!";
+                sendData(remainingTime, setTime, workcase,streakNumber);
+                resetToFirstPage(timer, isPaused, first_page, second_page, pop_up, pause_sprint, resume_sprint);
         }
     }, 1000);
 }
@@ -73,7 +78,9 @@ sprint_start.addEventListener("click", () => {
         button_10_min.checked = false;
         button_5_min.checked = false;
         button_25_min.checked = false;
+
         time = custom_sprint.value * 60;
+        setTime = time;
     }else if (button_5_min.checked) {
         setTime=300;
         time = 300;
@@ -134,6 +141,8 @@ end_sprint.addEventListener("click", () => {
     isPaused = true;
 
     pop_up.classList.add("active");
+
+
 });
 
 /* ========================= */
@@ -142,7 +151,8 @@ end_sprint.addEventListener("click", () => {
 
 stop_button.addEventListener("click", () => {
     resetToFirstPage(timer, isPaused, first_page, second_page, pop_up, pause_sprint, resume_sprint)
-});
+    sendData(remainingTime, setTime, workcase,streakNumber);
+    });
 
 cancel_button.addEventListener("click", () => {
     pop_up.classList.remove("active");
