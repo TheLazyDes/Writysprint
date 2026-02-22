@@ -1,4 +1,5 @@
 <?php
+
 // Hardcoded users
 $validusers = [
     ["username" => "alysaa1", "name" => "Alyssa Liu", "email"=> "itsalyssa@gmail.com", "password"=> "1234", "streak"=> 2], 
@@ -11,6 +12,7 @@ function login($validusers, $username, $password){
         if($user['username'] === $username && $user['password'] === $password){
             // Set cookie
             setcookie("user", $user['username'], time() + 3600, '/');
+            setcookie("streak", $user['streak'], time() + 3600, '/');
             header("Location: /Writysprint/dash.php");
             exit();
         }
@@ -40,7 +42,8 @@ function signup($validusers, $username, $password, $email, $name){
 
     // Log in the new user
     setcookie("user", $username, time() + 3600, '/');
-    header("Location: /Writysprint/home.php");
+    setcookie("streak", 0, time() + 3600, '/');
+    header("Location: /Writysprint/dash.php");
     exit();
 }
 

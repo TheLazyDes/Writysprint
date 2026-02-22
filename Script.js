@@ -24,6 +24,7 @@ const second_page = document.getElementById("active-sprint");
 let timer = null;
 let remainingTime = 0;
 let isPaused = false;
+let setTime = 0;
 
 /* ========================= */
 /* DISPLAY TIMER */
@@ -74,16 +75,20 @@ sprint_start.addEventListener("click", () => {
         button_25_min.checked = false;
         time = custom_sprint.value * 60;
     }else if (button_5_min.checked) {
+        setTime=300;
         time = 300;
     } else if (button_10_min.checked) {
+        setTime=600;
         time = 600;
     } else if (button_25_min.checked) {
+        setTime=1500;
         time = 1500;
     } else if (custom_sprint.value > 0) {
-        button_10_min,checked = false;
+        button_10_min.checked = false;
         button_5_min.checked = false;
         button_25_min.checked = false;
         time = custom_sprint.value * 60;
+        setTime = time;
     }
 
     if (time <= 0) {

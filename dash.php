@@ -5,6 +5,7 @@ if(!isset($_COOKIE['user'])){
 }
 
 
+
 echo "<h2>WELCOME TO THE DASHBOARD!</h2>";
 ?>
 
@@ -21,7 +22,8 @@ echo "<h2>WELCOME TO THE DASHBOARD!</h2>";
     <p class="streak-number"></p></div>
 
     <div><h3>Time spent writing today</h3>
-    <p class="streak-time"> 0 minutes spent</p></div>
+    <?php echo "<p class='streak-number'>" . $_COOKIE['streak'] . " minutes spent </p>"; ?>
+   </div>
 
 
 
