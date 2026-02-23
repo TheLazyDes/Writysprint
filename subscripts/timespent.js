@@ -1,14 +1,14 @@
  
 
-export function sendData(remainingTime, setTime, workcase,streakNumber) {
+export function sendData(remainingTime, setTime, workcase) {
 
     console.log("Send Data started");
-   
+   let worktime= setTime - remainingTime
 
-    if (setTime - remainingTime < 0) {
+    if ( worktime < 0) {
         console.log("Invalid time difference");
         return;
-    }else if (setTime - remainingTime <= 5) {
+    }else if (worktime <= 5) {
         workcase = "short";
     } else {
         workcase = "long";
@@ -30,7 +30,6 @@ export function sendData(remainingTime, setTime, workcase,streakNumber) {
         .then(response => response.text())
         .then(data => {
             console.log("Server returned streak:", data);
-            streakNumber.textContent = `Current Streak: ${data} day(s)`;
             console.log("Long sprint completed"); // ✅ now inside .then()
         })
         .catch(err => console.error("Fetch error:", err));
@@ -39,4 +38,22 @@ export function sendData(remainingTime, setTime, workcase,streakNumber) {
     default:
         console.log("Invalid workcase");
 }
+}
+
+export function getData(streakNumber){
+
+    fetch('/Writysprint/model/model.php', {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            credentials: "same-origin",
+            body: "action=getstreak"
+        })
+        .then(response => response.text())
+        .then(data => {
+            console.log("Server returned streak:", data);
+            console.log("Long sprint completed"); // ✅ now inside .then()
+            streakNumber.textContent= data;
+        })
+        .catch(err => console.error("Fetch error:", err));
+
 }

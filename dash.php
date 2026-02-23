@@ -37,5 +37,5 @@ echo "<h2>WELCOME TO THE DASHBOARD!</h2>";
     <button > <a href="sprint.html">Start Sprint</a></button>
 </body>
 
-<script type="module" src="Script.js"></script>
+<script type="module" src="./subscripts/dash.js"></script>
 </html>
