@@ -1,6 +1,7 @@
 
 import { setToSecondPage, resetToFirstPage } from "./subscripts/sprintmanager.js";
 import { sendData } from "./subscripts/timespent.js";
+import {sendtime} from "./subscripts/timespent.js";
 
 
 const button_5_min = document.getElementById("5-minutes-radio");
@@ -59,6 +60,7 @@ function countdown(time) {
             clearInterval(timer);
             sprint_display.textContent = "Time up!";
                 sendData(remainingTime, setTime, workcase,streakNumber);
+                sendtime(setTime, remainingTime);
                 resetToFirstPage(timer, isPaused, first_page, second_page, pop_up, pause_sprint, resume_sprint);
         }
     }, 1000);
@@ -152,6 +154,7 @@ end_sprint.addEventListener("click", () => {
 stop_button.addEventListener("click", () => {
     resetToFirstPage(timer, isPaused, first_page, second_page, pop_up, pause_sprint, resume_sprint)
     sendData(remainingTime, setTime, workcase,streakNumber);
+    sendtime(setTime, remainingTime)
     });
 
 cancel_button.addEventListener("click", () => {

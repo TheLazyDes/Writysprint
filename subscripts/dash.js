@@ -1,9 +1,11 @@
 import {getData } from './timespent.js';
 let streakNumber= document.getElementById('streak-number');
-let timeLeft= document.getElementById('time-left');
+import {sendtime} from './timespent.js';
+let timeLeft = document.getElementById('time-left');
 
 
 getData(streakNumber);
+
 
 
 //create a method to send time to the backend

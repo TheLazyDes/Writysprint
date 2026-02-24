@@ -59,7 +59,11 @@ export function getData(streakNumber, timeLeft){
 }
 
 
-export function sendtime(timeLeft){
+export function sendtime(setTime, remainingTime){
+    console.log("Your complete time", setTime-remainingTime);
+
+    //modify code to send to php backend to store in timespent
+    //write the code to replenish the time spent for the day and for the month
 
     
 

@@ -6,7 +6,7 @@ if (isset($_COOKIE['streak'])) {
             $streak = 0;
         }
 
-$timespent = 0;
+$dailyTimespent = 0;
 
 
 function getStreak($streak){
