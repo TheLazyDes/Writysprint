@@ -40,7 +40,7 @@ export function sendData(remainingTime, setTime, workcase) {
 }
 }
 
-export function getData(streakNumber){
+export function getData(streakNumber, timeLeft){
 
     fetch('/Writysprint/model/model.php', {
             method: "POST",
@@ -55,5 +55,12 @@ export function getData(streakNumber){
             streakNumber.textContent= data;
         })
         .catch(err => console.error("Fetch error:", err));
+
+}
+
+
+export function sendtime(timeLeft){
+
+    
 
 }

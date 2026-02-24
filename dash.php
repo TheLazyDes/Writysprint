@@ -1,6 +1,4 @@
 <?php
-header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
-header("Pragma: no-cache");
 
 if(!isset($_COOKIE['user'])){
     header("Location: /Writysprint/login.html");
@@ -21,6 +19,7 @@ echo "<h2>WELCOME TO THE DASHBOARD!</h2>";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="dashboard.module.css">
     <title>Document</title>
 </head>
 <body>
@@ -29,8 +28,9 @@ echo "<h2>WELCOME TO THE DASHBOARD!</h2>";
     <p id="streak-number" class="streak-number"></p></div>
 
     <div><h3>Time spent writing today</h3>
-    <p class='streak-number'> </p>; 
+    <p class='streak-number'id="time-left"> </p>; 
    </div>
+
 
 
 
