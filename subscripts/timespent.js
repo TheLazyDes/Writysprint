@@ -62,6 +62,20 @@ export function getData(streakNumber, timeLeft){
 export function sendtime(setTime, remainingTime){
     console.log("Your complete time", setTime-remainingTime);
 
+     fetch('/Writysprint/model/model.php', {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            credentials: "same-origin",
+            body: "action=sendtime"
+        })
+        .then(response => response.text())
+        .then(data => {
+            console.log("Server returned streak:", data);
+            console.log("Long sprint completed"); // ✅ now inside .then()
+            
+        })
+        .catch(err => console.error("Fetch error:", err));
+
     //modify code to send to php backend to store in timespent
     //write the code to replenish the time spent for the day and for the month
 
