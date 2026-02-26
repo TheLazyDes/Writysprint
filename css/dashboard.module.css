@@ -1,0 +1,136 @@
+/* Cute Panda Dashboard */
+
+/* Body background with soft gradient + playful font */
+body {
+    font-family: 'Comic Sans MS', 'Arial', sans-serif;
+    background: linear-gradient(135deg, #FFF9F0, #E3F2FD); /* cream to soft blue */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Welcome header with panda ears */
+h2 {
+    font-size: 2.8rem;
+    color: #333;
+    margin-top: 2rem;
+    text-align: center;
+    position: relative;
+}
+
+/* Panda ears using pseudo-elements */
+h2::before, h2::after {
+    content: '';
+    width: 50px;
+    height: 50px;
+    background: black;
+    border-radius: 50%;
+    position: absolute;
+    top: -25px;
+    animation: wiggle 2s infinite ease-in-out;
+}
+
+h2::before { left: -60px; }
+h2::after { right: -60px; }
+
+/* Wiggle animation for ears */
+@keyframes wiggle {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(10deg); }
+}
+
+/* Dashboard cards */
+div {
+    background: #FFF;
+    border-radius: 25px;
+    padding: 25px 35px;
+    margin: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    width: 320px;
+    text-align: center;
+    position: relative;
+    transition: transform 0.3s;
+}
+
+div:hover {
+    transform: translateY(-5px);
+}
+
+/* Streak and time text with panda emoji */
+.streak-number {
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: #444;
+    margin-top: 10px;
+}
+
+/* Panda emojis in front of streak */
+#streak-number::before { content: '🐼 '; }
+#time-left::before { content: '⏱️ '; }
+
+/* Floating paw prints decoration */
+div::after {
+    content: '🐾';
+    position: absolute;
+    bottom: -15px;
+    right: 15px;
+    font-size: 1.8rem;
+    opacity: 0.3;
+    animation: paw-bounce 2s infinite;
+}
+
+/* Paw bounce animation */
+@keyframes paw-bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+/* Cute button style */
+button {
+    background: #000;
+    color: #fff;
+    font-size: 1.3rem;
+    padding: 14px 30px;
+    margin: 20px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+}
+
+button:hover {
+    transform: scale(1.1);
+    background: #333;
+}
+
+button a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Round panda badges behind cards (optional extra cuteness) */
+div::before {
+    content: '🐼';
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    font-size: 2rem;
+    opacity: 0.2;
+    animation: float 3s infinite alternate ease-in-out;
+}
+
+/* Floating animation for panda badge */
+@keyframes float {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-10px); }
+}
+
+/* Responsive tweaks */
+@media (max-width: 400px) {
+    div { width: 90%; padding: 20px; }
+    h2::before, h2::after { width: 35px; height: 35px; top: -20px; }
+}

@@ -1,26 +1,17 @@
 <?php 
+        if (!isset($_COOKIE['streak'])) {
+    $streak = 0;
+} else {
+    $streak = (int)$_COOKIE['streak'];
+}
 
-if (isset($_COOKIE['streak'])) {
-            $streak = $_COOKIE['streak'];
+$previousStreakDay = $_COOKIE['previousStreakDay'] ?? null;
+$currentDay = date("Y-m-d");
 
-            if (isset($_COOKIE['date'])) {
-                $currentDay = $_COOKIE['date'];
-            } else {
-                $currentDay = " ";
-            }
-
-            if (isset($_COOKIE['previousStreakDay'])) {
-                $previousStreakDay = $_COOKIE['previousStreakDay'];
-            } else {
-                $previousStreakDay = " ";
-            }
-        } else {
-            header("Location: /Writysprint/login.html");
-        }
 
 
 $dailyTimespent = 0;
-$currentDay=" ";
+
 
 
 function getStreak($streak){
@@ -30,38 +21,25 @@ return $streak;
 
 
 function makeStreak($streak, $previousStreakDay){
-    $currentDay= date("Y-m-d");
-    if ($currentDay !== $previousStreakDay){
-        $streak+=1;
+    $currentDay = date("Y-m-d");
+
+    if ($previousStreakDay === date('Y-m-d', strtotime('-1 day'))){
+        $streak += 1;
         setcookie("streak", $streak, time() + 3600, '/');
-         setcookie("previousStreakDay", $currentDay, time() + 3600, '/');
+        setcookie("previousStreakDay", $currentDay, time() + 3600, '/');
         $previousStreakDay=$currentDay;
         return $streak;
+    } else if($previousStreakDay === $currentDay) {
 
-    }
-    else{
+}else{
+    $streak=0;
+}
+ setcookie("streak", $streak, time() + 3600, '/');
+    setcookie("previousStreakDay", $currentDay, time() + 3600, '/');
 
-         setcookie("streak", $streak, time() + 3600, '/');
-        return $streak;
-    }
-    
-        
-    
-
-  
-     
-   
+return  $streak; 
 }
 
-
-
-/*function breakStreak(){
-    if (date('Y-m-d') != date('Y-m-d', strtotime('+1 day'))){
-        echo "You have broken your streak.";
-    $streak = 0;
-    echo "Your streak has been reset to $streak day(s).";
-}
-*/
 
 
 
